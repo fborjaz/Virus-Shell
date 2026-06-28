@@ -1,732 +1,429 @@
-*{
+* {
   all: unset;
-  font-family:"Monocraft Nerd Font";
+  font-family: "Monocraft Nerd Font";
 }
 
-.bar{
+.bar {
   box-shadow: 0 2px 3px 1px rgba(6,6,11,0.9);
   border-radius: 10px;
   background-color: rgba(24,24,37,0.94);
   padding: 5px;
-  margin:6.5px;
+  margin: 6.5px;
 }
 
-.menu{
-  margin-left:12px;
+.menu {
+  margin-left: 12px;
+  font-size: 20px;
 }
 
-.menu-eventbox{
-  color:#1793d1;
-  transition: color 0.3s;
-  &:hover{
-    color:#cdd6f4;
+.menu-eventbox {
+  color: #1793d1;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #cdd6f4;
+    transform: scale(1.1);
   }
 }
 
-.power{
-  margin-right:10px;
+.power {
+  margin-right: 10px;
 }
 
-.power-eventbox{
-  color:rgb(230,100,100);
-  font-weight:bold;
-  font-size:20px;
+.power-eventbox {
+  color: rgb(230,100,100);
+  font-weight: bold;
+  font-size: 20px;
   font-family: "JetBrainsMono Nerd Font";
-  transition: color 0.3s;
-  &:hover{
-    color:rgb(245,162,96);
+  transition: all 0.3s ease;
+  &:hover {
+    color: rgb(245,162,96);
+    transform: scale(1.1);
   }
 }
 
-.ws{
+/* ======================================================== */
+/* WORKSPACES - ESTILO MONASM */
+/* ======================================================== */
+
+.ws-container {
+  background-color: rgba(0,0,0,0.38);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.ws {
   font-family: "JetBrainsMono Nerd Font";
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  min-width: 25px;
+  text-align: center;
+}
+
+/* Workspace vacío - translúcido */
+.ws.free {
+  color: rgba(205,212,246,0.3);
+  background-color: transparent;
+  &:hover {
+    color: rgba(205,212,246,0.6);
+    background-color: rgba(205,212,246,0.1);
+  }
+}
+
+/* Workspace ocupado - visible */
+.ws.occupied {
+  color: #cdd6f4;
+  background-color: rgba(205,212,246,0.15);
+  &:hover {
+    background-color: rgba(205,212,246,0.25);
+  }
+}
+
+/* Workspace activo - destacado */
+.ws.visiting {
+  color: #1793d1;
+  background-color: rgba(23,147,209,0.25);
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(23,147,209,0.4);
+  &:hover {
+    background-color: rgba(23,147,209,0.35);
+  }
+}
+
+.div {
+  font-size: 25px;
+  font-weight: 100;
+  color: rgba(205,212,246,0.3);
+}
+
+/* ======================================================== */
+/* TIME WIDGET CON ANIMACIÓN */
+/* ======================================================== */
+
+.time-label {
+  background-color: rgba(0,0,0,0.38);
+  color: rgb(78,200,200);
+  padding: 4px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  &:hover {
+    color: rgb(255,255,255);
+    background-color: rgb(78,200,200);
+    box-shadow: 0 0 10px rgba(78,200,200,0.5);
+    transform: scale(1.05);
+  }
+}
+
+/* ======================================================== */
+/* CALENDAR WINDOW */
+/* ======================================================== */
+
+.calendar-container {
+  box-shadow: 0 4px 8px 2px rgba(6,6,11,0.9);
+  margin: 5.5px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background-color: rgba(24,24,37,0.96);
+  padding: 15px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.time-box {
+  box-shadow: 0 2px 3px 2px rgba(6,6,11,0.9);
+  border-radius: 15px;
+  margin-bottom: 15px;
+  padding: 20px 25px;
+  background-color: rgba(0,0,0,0.28);
+}
+
+.time-inner {
+  color: rgb(48,100,170);
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.date-inner {
+  color: #cdd4f6;
   font-size: 16px;
-  color: #cdd6f4;
+  text-align: center;
 }
 
-.div{
-  font-size:25px;
-  font-weight:100;
-  color:rgba(205,212,246,0.3);
-}
-
-.free{
-  opacity:0.2;
-  transition: opacity 0.3s;
-  &:hover{
-    opacity:1;
-  }
-}
-
-.time-label{
-  background-color:rgba(0,0,0,0.38);
-  color:rgb(78,200,200);
-  border-radius:20px;
-  transition: color 0.3s;
-  transition: background-color 0.3s;
-  &:hover{
-    color:rgb(255,255,255);
-    background-color:rgb(78,200,200);
-  }
-}
-
-.keyboard,.battery,.volume-short, .ram-short{
-  background-color:rgba(0,0,0,0.38);
-  padding:0px 13px;
-  border-radius:20px;
-  font-size:11px;
-  margin:3px 0px;
-}
-
-.volume-short{
-
-}
-
-.ram-short{
-  color: #4D9FEC;
-}
-
-.keyboard{
-  color:rgb(245,162,96);
-}
-
-.kb-div,.wifi-div{
-  margin:0px 3px;
-}
-
-.kb-type,.wifi-type{
-  color:rgb(205,212,246);
-}
-
-.tray-button{
-  font-size:20px;
-  font-family:"JetBrainsMono Nerd Font";
-  color: #cdd6f4;
-  border-radius:10px;
-  transition: background-color 0.6s;
-  &:hover{
-    background-color:rgba(0,0,0,0.38);
-  }
-}
-
-.systray-shadow{
-  background-color:rgba(0,0,0,0.38);
-  margin-right:5px;
-  margin-top:3px;
-  margin-bottom:3px;
-  padding:0px 8px;
-  border-radius:20px;
-}
-
-image{
-  margin: 0px 3px;
-}
-
-menu {
-  border-radius:15px;
-  padding: 10px;
-  background-color: red;
-  color:#cdd6f4;
-  background-color: rgba(0,0,0,0.68);
-  menuitem {
-    border-radius: 10px;
-    padding: 8px 12px;
-  }
-  menuitem:hover {
-    background-color: rgba(70,70,220,0.85);
-  }
-}
-
-.tray-text{
-  margin-bottom:4px;
-}
-
-.wifi{
-  background-color:rgba(0,0,0,0.38);
-  padding-left: 13px;
-  padding-right: 13px;
-  color:rgb(245,162,96);
-  border-radius:20px;
-  font-size:11px;
-  margin:3px 0px;
-}
-
-.space-wifi{
-  font-size:4px;
-}
-
-.wifictl-container, .menuctl-container{
-  box-shadow: 0 2px 3px 2px #06060b;
-  margin:5.5px;
-  border-radius: 20px;
-  min-width:385px;
-  background-color: rgba(24,24,37,0.92);
-  padding: 5px;
-}
-
-.wifi-header, .cpu-header, .menu-header{
-  font-size:25px;
-  margin-left:15px;
-  margin-top:10px;
-  margin-bottom:7px;
-  color:rgb(48,100,170);
-}
-
-.wifi-stats, .menu-subheader{
-  color: #cdd6f4;
-  margin-left:15px;
-}
-
-.nocon{
-  color:#E74C3C;
-}
-
-.yescon{
-  color: #2ECC71;
-}
-
-.network-container, .app-container{
-  min-height:15rem;
-  margin:7px;
-  margin-top:17px;
-  border-radius:15px;
+.calendar-box {
   box-shadow: 0 2px 3px 2px rgba(6,6,11,0.9);
-  background-color:rgba(0,0,0,0.28);
+  border-radius: 15px;
+  padding: 15px;
+  background-color: rgba(0,0,0,0.28);
 }
 
-.app-container{
-  min-height:25rem;
-}
-
-.wifi-option-box, .app-option-box{
-  font-size:16px;
-  margin:5px 5px;
-  border-radius:15px;
-  padding:10px;
-  background-color:rgba(65,72,86,0.3);
-  box-shadow: 0 2px 3px 2px rgba(6,6,11,0.9);
-}
-
-.wifi-ssid{
-  margin:2px 15px;
-}
-
-.app-display{
-  margin:2px 2px;
-}
-
-.app-name{
-  margin-left:15px;
-}
-
-.wifi-ssid-01{
-  color: #cdd6f4;
-}
-
-.wifi-ssid-02{
-  color: #4D9FEC;
-}
-
-.wifi-ssid-03{
-  color: #2ECC71;
-}
-
-.wifi-buttons{
-  color: #cdd6f4;
-  border-radius:10px;
-  background-color: rgba(0,0,0,0.52);
-}
-
-.wifi-bcon{
-  margin:10px;
-}
-
-.iwifi{
-  margin-top:2px;
-  margin-left:10px;
-}
-
-.swifi-header{
-  font-size:15px;
-  margin-left:15px;
-  margin-top:10px;
-  margin-bottom:7px;
-  color: #cdd6f4;
-}
-
-.calendar-container{
-  box-shadow: 0 2px 3px 2px #06060b;
-  margin:5.5px;
-  margin-bottom:10px;
-  border-radius: 20px;
-  background-color: rgba(24,24,37,0.92);
-  padding: 5px;
-}
-
-.time-box{
-  box-shadow: 0 2px 3px 2px #06060b;
-  border-radius:15px;
-  margin-top:8px;
-  padding-left:25px;
-  padding-right:25px;
-  padding-bottom:20px;
-  background-color:rgba(0,0,0,0.28);
-}
-
-.time-inner{
-  color:rgb(48,100,170);
-  font-size:50px;
-  margin-left:4px;
-  margin-top:10px;
-}
-
-.date-inner{
-  color:#cdd4f6;
-  margin-top:20px;
-  font-size:18px;
-}
-
-.calendar-box{
-  box-shadow: 0 2px 3px 2px rgba(6,6,11,0.9);
-  border-radius:15px;
-  padding-top:10px;
-  padding-left:10px;
-  padding-right:10px;
-  margin-bottom:9px;
-  background-color:rgba(0,0,0,0.28); 
-}
-
-.cal{
-  padding:5px;
-  color:rgb(205,212,246);
-  &.header{
-    color:rgb(219,193,117);
+.cal {
+  padding: 8px;
+  color: rgb(205,212,246);
+  font-size: 13px;
+  &.header {
+    color: rgb(219,193,117);
+    font-weight: bold;
   }
-  &.button{
-    color:rgb(219,193,117);
-    &:hover{
-      color:rgb(230,100,100);
+  &.button {
+    color: rgb(219,193,117);
+    &:hover {
+      color: rgb(230,100,100);
     }
   }
-  &:indeterminate{
-    color:rgba(205,212,246,0.4);
+  &:indeterminate {
+    color: rgba(205,212,246,0.4);
   }
-  &.highlight{
-    color:rgb(245,162,96);
+  &.highlight {
+    color: rgb(245,162,96);
+    background-color: rgba(245,162,96,0.2);
+    border-radius: 8px;
+    font-weight: bold;
   }
 }
 
-.main-container, .music-container, .cpu-container{
-  box-shadow: 0 2px 3px 2px #06060b;
-  margin:5.5px;
+/* ======================================================== */
+/* POWER MENU */
+/* ======================================================== */
+
+.main-container {
+  box-shadow: 0 4px 8px 2px rgba(6,6,11,0.9);
+  margin: 5.5px;
   border-radius: 20px;
-  min-width:385px;
-  background-color: rgba(24,24,37,0.92);
-  padding: 5px;
+  background-color: rgba(24,24,37,0.96);
+  padding: 15px;
+  animation: slideDown 0.3s ease;
 }
 
-.profile,.graph-container{
-  min-width:370px;
-  margin:0px 7px;
-  margin-top:5px;
-  padding:10px;
-  border-radius:15px;
+.ctlpanel {
+  border-radius: 15px;
+  padding: 15px;
+  background-color: rgba(0,0,0,0.28);
+  font-family: "JetBrainsMono Nerd Font";
   box-shadow: 0 2px 3px 2px rgba(6,6,11,0.9);
-  background-color:rgba(0,0,0,0.28);
 }
 
-.graph-container{
+.shutdown {
+  color: #e06c75;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #f38b91;
+    background-color: rgba(224,108,117,0.2);
+    transform: translateX(5px);
+  }
+}
+
+.logout {
+  color: #d19a66;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #e5b07b;
+    background-color: rgba(209,154,102,0.2);
+    transform: translateX(5px);
+  }
+}
+
+.lockscr {
+  color: #61afef;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #79c0ff;
+    background-color: rgba(97,175,239,0.2);
+    transform: translateX(5px);
+  }
+}
+
+.reboot {
+  color: #c678dd;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #d896f0;
+    background-color: rgba(198,120,221,0.2);
+    transform: translateX(5px);
+  }
+}
+
+.suspend {
+  color: #56b6c2;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #6edddf;
+    background-color: rgba(86,182,194,0.2);
+    transform: translateX(5px);
+  }
+}
+
+/* ======================================================== */
+/* MONITORING WIDGETS */
+/* ======================================================== */
+
+.keyboard, .battery, .volume-short, .ram-short, .cpu-short, .disk-short {
+  background-color: rgba(0,0,0,0.38);
+  padding: 4px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin: 3px 0px;
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+}
+
+.ram-short {
+  color: #4D9FEC;
+}
+
+.cpu-short {
   color: #FF6B6B;
 }
 
-.graph-display{
-  min-width:350px;
+.disk-short {
+  color: #43E97B;
 }
 
-.main-temp{
-  border-radius:10px;
-  background-color:rgba(65,72,86,0.3);
-  margin-left:3px;
-  padding:5px 10px;
-}
-
-
-.pfp{
-  box-shadow: 0 2px 3px 2px rgba(6,6,11,0.9);
-  background-image: url('./Monasm.jpg');
-  background-size: 90px;
-  background-position: 50% 35%;
-  background-repeat:no-repeat;
-  min-height: 90px;
-  min-width: 90px;
-  border-radius: 100%;
-  margin-right:20px;
-}
-
-.username{
-  font-size:30px;
-  color:rgb(48,100,170);
-}
-
-.uptime{
-  color:rgb(205,212,246);
-}
-
-.minicore-container{
-  margin-top:20px;
-  margin-bottom:5px;
-}
-
-.minicores{
-  padding:7px;
-}
-
-.C0,.C1,.C2,.C3{
-  margin:0px 7px;
-  padding:10px;
-  border-radius:15px;
-  box-shadow: 0 2px 3px 2px rgba(6,6,11,0.9);
-  background-color:rgba(0,0,0,0.28);
-  color:#88C0D0;
-}
-
-.ctlpanel{
-  min-width:230px;
-  margin-top:10px;
-  border-radius:20px;
-  padding:5px;
-  background-color:rgba(65,72,86,0.3);
-  font-family: "JetBrainsMono Nerd Font";
-  box-shadow: 0 2px 3px 2px rgba(6,6,11,0.9);
-}
-
-.shutdown{
-  color:#e06c75;
-  transition:color 0.3s;
-  &:hover{
-    color:#f38b91;
-  }
-}
-
-.logout{
-  color:#d19a66;
-  transition:color 0.3s;
-  &:hover{
-    color:#e5b07b;
-  }
-}
-
-.lockscr{
-  color:#61afef;
-  transition:color 0.3s;
-  &:hover{
-    color:#79c0ff;
-  }
-}
-
-.reboot{
-  color:#c678dd;
-  transition: color 0.3s;
-  &:hover{
-    color:#d896f0;
-  }
-}
-
-.suspend{
-  color:#56b6c2;
-  transition:color 0.3s;
-  &:hover{
-    color:#6edddf;
-  }
-}
-
-.hibernate {
-  color: #5fb3b3;
-  transition: color 0.3s;
+.keyboard {
+  color: rgb(245,162,96);
+  cursor: pointer;
   &:hover {
-    color: #a1e3e3;
+    background-color: rgba(245,162,96,0.2);
   }
 }
 
-tooltip{
-  padding:10px;
-  border-radius:20px;
-  background-color: rgba(24,24,37,0.75);
-}
-
-.sysctl{
-  margin:0px 7px;
-  margin-top:17px;
-  padding:10px;
-  box-shadow: 0 2px 3px 2px rgba(6,6,11,0.9);
-  background-color:rgba(0,0,0,0.28);
-  min-width:370px;
-  border-radius:15px;
-}
-
-.BAT1, .BAT2, .BAT3{
+.battery {
   color: #2ECC71;
 }
 
-.BAT4, .BAT5{
-  color:#E74C3C;
+.BAT1, .BAT2, .BAT3 {
+  color: #2ECC71;
 }
 
-.CHARGING{
-  color: #F1C40F;
+.BAT4, .BAT5 {
+  color: #E74C3C;
 }
 
-.batico-main{
-  margin-left:10px;
-  margin-right:15px;
-  font-size:50px;
-}
-
-.batico-short{
-  margin-right:6px;
-  margin-top:6px;
-}
-
-.volico{
-  color:rgb(144, 104, 220);
-  margin-left:3px;
-}
-
-.bsht{
+.bsht {
   color: #cdd6f4;
 }
 
-.bat-percent{
-  font-size:20px;
-  color:rgb(205,212,246);
-}
+/* ======================================================== */
+/* SYSTEM TRAY */
+/* ======================================================== */
 
-.bat-status{
-  color:rgba(255,255,255,0.5)
-}
-
-.bat-btn{
-  font-size:13px;
-}
-
-.divider-h{
-  min-height:3px;
-  margin:15px 5px;
-  background-color:rgb(0,0,0);
-}
-
-.sys{
-  margin:0px 10px;
-}
-
-.cpu-box, .ram-box, .disk-box{
-  margin:0px 10px;
-  border-radius:15px;
-  box-shadow: 0 2px 3px 2px rgba(6,6,11,0.9);
-  background-color:rgba(45,52,66,0.3);
-}
-
-.cpu, .ram, .disk{
-  border-radius:100px;
-  margin-top:20px;
-}
-.cpu, .cpu01{ color: #FF6B6B;}
-.ram, .ram01{ color: #4D9FEC; }
-.disk, .disk01{ color: #43E97B; }
-.cpu02, .ram02, .disk02{ color: rgb(205,212,246); }
-
-.ramico, .diskico, .cpuico{
-  margin-right: 15px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  font-size:20px;
-}
-
-.cpuico{
-  margin-left:20px;
-}
-
-.ramico, .diskico{
-  margin-left:25px;
-}
-
-.cpu, .ram, .disk{
-  background-color:rgb(0,0,0);
-}
-
-.cpu-text, .ram-text, .disk-text{
-  margin-bottom:10px;
-}
-
-.ram-text, .disk-text{
-  margin-top:3.2px;
-}
-
-.sliderctl{
-  border-radius:15px;
-  box-shadow: 0 2px 3px 2px rgba(6,6,11,0.9);
-  background-color:rgba(45,52,66,0.3);
-  margin-left:20px;
-  margin-right:20px;
-  margin-top:20px;
-  margin-bottom:10px;
-}
-
-.monitor-container{
-  margin-bottom:6px;
-}
-
-.volume-slider{
-  margin-top:10px;
-  margin-left:13px;
-}
-
-.light-slider{
-  margin-bottom:10px;
-  margin-left:13px;
-}
-
-.vol trough {
-  all: unset;
-  background-color: rgba(0,0,0,0.3);
-  box-shadow: 0 2px 3px 2px rgba(6,6,11,0.3);
-  border-radius: 50px;
-  min-height: 10px;
-  min-width: 250px;
-  margin: 0 20px 0 20px;
-}
-
-.vol trough highlight {
-  all: unset;
-  background-color:rgb(144, 104, 190);
+.tray-button {
+  font-size: 20px;
+  font-family: "JetBrainsMono Nerd Font";
+  color: #cdd6f4;
   border-radius: 10px;
-}
-
-.volume-slider,.volume-short{
-  color:rgb(144, 104, 190);
-}
-
-.lig trough {
-  all: unset;
-  background-color: rgba(0,0,0,0.3);
-  box-shadow: 0 2px 3px 2px rgba(6,6,11,0.3);
-  border-radius: 50px;
-  min-height: 10px;
-  min-width: 250px;
-  margin: 0 20px 0 20px;
-}
-
-.lig trough highlight {
-  all: unset;
-  background-color:rgb(219,193,117);
-  border-radius: 10px;
-}
-
-.light-slider{
-  color:rgb(219,193,117);
-}
-
-.clear-container{
-  margin:6px 10px;
-}
-
-.nheader{
-  font-size:20px;
-  color:rgb(205,212,246);
-}
-
-.clear{
-  color:rgb(230,100,100);
-  font-size:30px;
-  transition: color 0.3s;
-  &:hover{
-    color:rgb(219,193,117);
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: rgba(0,0,0,0.38);
+    color: #1793d1;
   }
 }
 
-.music-title{
-  margin-left:7px;
-  margin-right:7px;
-  margin-top:7px;
+.systray-shadow {
+  background-color: rgba(0,0,0,0.38);
+  margin-right: 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  padding: 0px 8px;
+  border-radius: 20px;
 }
 
-.music-thumbnail{
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    min-height: 6rem;
-    min-width: 6rem;
-    border-radius: 1rem;
+image {
+  margin: 0px 3px;
 }
 
-.app-ico{
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    min-height: 2.5rem;
-    min-width: 2.5rem;
+.tray-text {
+  margin-bottom: 4px;
 }
 
-.main-title{
-  margin-top:15px;
-  margin-bottom:12px;
-  margin-left:15px;
-  font-size:20px;
-  color: #4D9FEC; 
-}
+/* ======================================================== */
+/* NETWORK WIDGET */
+/* ======================================================== */
 
-.artist{
-  color: rgb(205,212,246);
-  font-size:13px;
-  margin-left:15px;
-}
-
-.music-slider{
-  margin-top:10px;
-}
-
-.music-slider trough {
-  all: unset;
-  background-color: rgba(0,0,0,0.3);
-  box-shadow: 0 2px 3px 2px rgba(6,6,11,0.3);
-  border-radius: 50px;
-  min-height: 5px;
-  min-width: 270px;
-  margin: 0 20px 0 20px;
-}
-
-.music-slider trough highlight {
-  all: unset;
-  background-color:rgb(48,100,170);
-  border-radius: 10px;
-}
-
-.music-timer{
-  color: rgb(205,212,246);
-  margin:3px 20px;
-}
-
-.mico{
-  font-size:30px;
-  margin-left:10px;
-  transition:color 0.3s;
-  &:hover{
-    color:rgb(48,100,170);
+.wifi {
+  background-color: rgba(0,0,0,0.38);
+  padding: 4px 13px;
+  color: rgb(245,162,96);
+  border-radius: 20px;
+  font-size: 12px;
+  margin: 3px 0px;
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
   }
 }
 
-.vol-mini trough {
-  all: unset;
-  margin-left:7px;
-  background-color: rgba(70,70,70,0.4);
-  border-radius: 50px;
-  min-height: 5px;
-  min-width: 100px;
+/* ======================================================== */
+/* WEATHER WIDGET */
+/* ======================================================== */
+
+.weather {
+  background-color: rgba(0,0,0,0.38);
+  padding: 4px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin: 3px 0px;
+  color: #94e2d5;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(148,226,213,0.3);
+    background-color: rgba(148,226,213,0.15);
+  }
 }
 
-.vol-mini trough highlight {
-  all: unset;
-  background-color:rgb(144, 104, 220);
-  border-radius: 10px;
+/* ======================================================== */
+/* VOLUME WIDGET */
+/* ======================================================== */
+
+.volume-short {
+  color: rgb(144, 104, 190);
 }
 
+tooltip {
+  padding: 10px;
+  border-radius: 20px;
+  background-color: rgba(24,24,37,0.95);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  color: #cdd6f4;
+}
+
+/* CPU, RAM, DISK icons */
+.cpu { color: #FF6B6B; }
+.ram { color: #4D9FEC; }
+.disk { color: #43E97B; }
