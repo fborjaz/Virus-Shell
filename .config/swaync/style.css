@@ -1,0 +1,145 @@
+/* Catppuccin Mocha — SwayNC */
+
+* {
+  font-family: "Monocraft Nerd Font", "Noto Sans", monospace;
+  font-size: 14px;
+  transition: all 200ms ease;
+}
+
+.control-center {
+  background: rgba(17, 17, 27, 0.92);
+  border-radius: 14px;
+  border: 1px solid #313244;
+  padding: 10px;
+  margin: 4px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Notificación individual ── */
+.notification-row { outline: none; }
+
+.notification {
+  background: #181825;
+  border-radius: 12px;
+  border: 1px solid #313244;
+  padding: 12px;
+  margin: 4px 0;
+}
+
+.notification:hover { border-color: #89b4fa; }
+
+.notification.critical {
+  border-color: #f38ba8;
+  background: rgba(243, 139, 168, 0.08);
+}
+
+.notification-default-action {
+  background: transparent;
+  border-radius: 12px;
+  padding: 0;
+}
+
+.notification-default-action:hover {
+  background: rgba(49, 50, 68, 0.5);
+}
+
+.notification .summary {
+  font-size: 14px;
+  font-weight: bold;
+  color: #cdd6f4;
+}
+
+.notification .time {
+  font-size: 11px;
+  color: #6c7086;
+}
+
+.notification .body {
+  font-size: 13px;
+  color: #a6adc8;
+}
+
+/* ── Botones de acción ── */
+.notification-action {
+  background: #313244;
+  border-radius: 8px;
+  margin: 3px;
+  padding: 4px 10px;
+  color: #cdd6f4;
+  border: none;
+  font-size: 12px;
+}
+
+.notification-action:hover {
+  background: #89b4fa;
+  color: #1e1e2e;
+}
+
+.close-button {
+  background: transparent;
+  border-radius: 50%;
+  color: #6c7086;
+  border: none;
+  min-width: 22px;
+  min-height: 22px;
+  padding: 0;
+  font-size: 13px;
+}
+
+.close-button:hover {
+  background: rgba(243, 139, 168, 0.2);
+  color: #f38ba8;
+}
+
+/* ── Título del panel ── */
+.widget-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #b4befe;
+  padding: 8px 6px 4px;
+}
+
+.widget-title > button {
+  background: #313244;
+  border-radius: 8px;
+  border: none;
+  color: #cdd6f4;
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+.widget-title > button:hover {
+  background: rgba(243, 139, 168, 0.2);
+  color: #f38ba8;
+}
+
+/* ── No molestar ── */
+.widget-dnd {
+  background: #181825;
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin: 4px 0;
+  border: 1px solid #313244;
+}
+
+.widget-dnd > label {
+  color: #a6adc8;
+  font-size: 13px;
+}
+
+.widget-dnd > switch {
+  border-radius: 20px;
+  background: #45475a;
+  border: none;
+}
+
+.widget-dnd > switch:checked {
+  background: #a6e3a1;
+}
+
+.widget-dnd > switch slider {
+  background: #cdd6f4;
+  border-radius: 50%;
+  min-width: 18px;
+  min-height: 18px;
+}

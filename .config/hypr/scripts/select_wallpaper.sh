@@ -13,7 +13,7 @@ log() {
     echo "$(date '+%F %T') [select_wallpaper] $*" >> "$LOG_FILE"
 }
 
-for cmd in find sort rofi ln pkill nohup hyprpaper; do
+for cmd in find sort rofi swww; do
     if ! command -v "$cmd" >/dev/null 2>&1; then
         log "missing dependency: $cmd"
         exit 1
@@ -44,11 +44,15 @@ else
     log "wal not installed; skipping palette generation"
 fi
 
-if ! ln -sfn "$WALL" "$ARCHIVO_GUARDADO"; then
-    log "failed to update symlink: $ARCHIVO_GUARDADO"
-    exit 1
-fi
+ln -sfn "$WALL" "$ARCHIVO_GUARDADO" || log "warning: symlink update failed"
 
-pkill -x hyprpaper 2>/dev/null || true
-nohup hyprpaper -c "$HYPRPAPER_CFG" >/tmp/hyprpaper.log 2>&1 &
+if ! swww img "$WALL" \
+    --transition-type outer \
+    --transition-duration 1.2 \
+    --transition-fps 60 2>>"$LOG_FILE"; then
+    log "swww failed, trying to restart daemon..."
+    swww-daemon &
+    sleep 0.5
+    swww img "$WALL" --transition-type outer --transition-duration 1.2
+fi
 log "applied wallpaper: $WALL"

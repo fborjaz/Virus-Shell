@@ -25,7 +25,7 @@ echo -e "${YELLOW}${BOLD}"
 cat << 'EOF'
 ╔═══════════════════════════════════════════════════════╗
 ║              VIRUS-SHELL  —  INSTALL                  ║
-║   Hyprland · Eww · Kitty · Dunst · Rofi · pywal      ║
+║  Hyprland · Eww · Kitty · swaync · wlogout · pywal   ║
 ║                                                        ║
 ║  AVISO: sobreescribirá archivos en ~/.config           ║
 ╚═══════════════════════════════════════════════════════╝
@@ -38,13 +38,13 @@ read -rp "¿Continuar la instalación? [s/N] " RESP
 step "Instalando paquetes del sistema (pacman)..."
 PKGS=(
     # Compositor y herramientas Hypr
-    hyprland hyprpaper hypridle hyprlock
+    hyprland hypridle hyprlock
 
     # Terminal y barra
     kitty eww
 
     # Notificaciones y lanzadores
-    dunst rofi
+    rofi
 
     # Control de hardware
     pamixer playerctl brightnessctl pipewire wireplumber
@@ -57,6 +57,9 @@ PKGS=(
 
     # Autenticación y servicios
     polkit-gnome gnome-keyring
+
+    # Iconos
+    papirus-icon-theme
 
     # Fuentes base y íconos
     noto-fonts noto-fonts-emoji ttf-font-awesome
@@ -71,15 +74,23 @@ sudo pacman -S --needed --noconfirm "${PKGS[@]}" || warn "Algunos paquetes no se
 
 # ── Paquetes AUR ──────────────────────────────────────────────────────────────
 step "Instalando paquetes AUR..."
-AUR_PKGS=(miku-cursor-git)
+AUR_PKGS=(
+    swww                          # Wallpaper con transiciones animadas
+    wlogout                       # Pantalla de logout con íconos
+    swayosd                       # OSD de volumen/brillo
+    swaynotificationcenter        # Centro de notificaciones (swaync)
+    catppuccin-gtk-theme-mocha    # Tema GTK Catppuccin Mocha
+    papirus-folders-git           # Colores de carpetas Catppuccin
+    miku-cursor-git               # Cursor miku
+)
 
 if command -v yay &>/dev/null; then
-    yay -S --needed --noconfirm "${AUR_PKGS[@]}" || warn "Algunos AUR fallaron (cursor miku)"
+    yay -S --needed --noconfirm "${AUR_PKGS[@]}" || warn "Algunos AUR fallaron — instala manualmente los que falten"
 elif command -v paru &>/dev/null; then
-    paru -S --needed --noconfirm "${AUR_PKGS[@]}" || warn "Algunos AUR fallaron (cursor miku)"
+    paru -S --needed --noconfirm "${AUR_PKGS[@]}" || warn "Algunos AUR fallaron — instala manualmente los que falten"
 else
-    warn "No se encontró yay ni paru. Instala manualmente: ${AUR_PKGS[*]}"
-    warn "  → https://aur.archlinux.org/packages/miku-cursor-git"
+    warn "No se encontró yay ni paru. Instala manualmente desde AUR:"
+    for P in "${AUR_PKGS[@]}"; do warn "  → $P"; done
 fi
 
 # ── Clonar / actualizar repositorio ──────────────────────────────────────────
@@ -102,7 +113,7 @@ done
 # ── Copiar configuraciones ────────────────────────────────────────────────────
 step "Copiando configuraciones a ~/.config/..."
 mkdir -p "$CFG"
-for DIR in eww hypr kitty; do
+for DIR in eww hypr kitty swaync wlogout gtk-3.0 gtk-4.0; do
     rm -rf "$CFG/$DIR"
     cp -r "$REPO_DIR/.config/$DIR" "$CFG/"
     ok "Copiado: $DIR"
@@ -112,6 +123,11 @@ done
 for EXTRA in dunst rofi fastfetch nvim; do
     [[ -d "$REPO_DIR/.config/$EXTRA" ]] && cp -r "$REPO_DIR/.config/$EXTRA" "$CFG/" && ok "Copiado: $EXTRA"
 done
+
+# Aplicar colores de carpetas Papirus con tema Catppuccin
+if command -v papirus-folders &>/dev/null; then
+    papirus-folders -C cat-mocha-blue --theme Papirus-Dark 2>/dev/null && ok "Carpetas Papirus: Catppuccin Mocha Blue"
+fi
 
 # ── Instalar fuentes ──────────────────────────────────────────────────────────
 step "Instalando fuente Monocraft / Minecraft..."

@@ -13,7 +13,7 @@ log() {
 	echo "$(date '+%F %T') [random_wallpaper] $*" >> "$LOG_FILE"
 }
 
-for cmd in find shuf ln pkill nohup hyprpaper; do
+for cmd in find shuf swww; do
 	if ! command -v "$cmd" >/dev/null 2>&1; then
 		log "missing dependency: $cmd"
 		exit 1
@@ -32,12 +32,17 @@ if [[ -z "$RANDOM_PIC" ]]; then
 	exit 1
 fi
 
-if ! ln -sfn "$RANDOM_PIC" "$ARCHIVO_GUARDADO"; then
-	log "failed to update symlink: $ARCHIVO_GUARDADO"
-	exit 1
-fi
+ln -sfn "$RANDOM_PIC" "$ARCHIVO_GUARDADO" || log "warning: symlink update failed"
 
-pkill -x hyprpaper 2>/dev/null || true
-nohup hyprpaper -c "$HYPRPAPER_CFG" >/tmp/hyprpaper.log 2>&1 &
+if ! swww img "$RANDOM_PIC" \
+    --transition-type wipe \
+    --transition-angle 30 \
+    --transition-duration 1.5 \
+    --transition-fps 60 2>>"$LOG_FILE"; then
+    log "swww failed, trying to restart daemon..."
+    swww-daemon &
+    sleep 0.5
+    swww img "$RANDOM_PIC" --transition-type wipe --transition-angle 30 --transition-duration 1.5
+fi
 log "applied wallpaper: $RANDOM_PIC"
 

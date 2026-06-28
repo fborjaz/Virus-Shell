@@ -1,0 +1,83 @@
+/* Catppuccin Mocha — wlogout */
+
+* {
+  font-family: "Monocraft Nerd Font", "Noto Sans", monospace;
+  background-image: none;
+  transition: all 0.25s ease-in-out;
+}
+
+window {
+  background-color: rgba(17, 17, 27, 0.88);
+}
+
+button {
+  color: #cdd6f4;
+  background-color: rgba(30, 30, 46, 0.75);
+  border: 2px solid #313244;
+  border-radius: 16px;
+  background-repeat: no-repeat;
+  background-position: center 36px;
+  background-size: 56px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 10px;
+  padding: 110px 32px 20px;
+  min-width: 120px;
+}
+
+button:hover {
+  background-color: rgba(49, 50, 68, 0.6);
+  border-color: #89b4fa;
+  color: #89b4fa;
+}
+
+#lock {
+  background-image: image(url("/usr/share/wlogout/icons/lock.png"),
+                          url("lock.png"));
+}
+#lock:hover {
+  border-color: #89b4fa;
+  background-color: rgba(137, 180, 250, 0.15);
+  color: #89b4fa;
+}
+
+#logout {
+  background-image: image(url("/usr/share/wlogout/icons/logout.png"),
+                          url("logout.png"));
+}
+#logout:hover {
+  border-color: #a6e3a1;
+  background-color: rgba(166, 227, 161, 0.15);
+  color: #a6e3a1;
+}
+
+#suspend {
+  background-image: image(url("/usr/share/wlogout/icons/suspend.png"),
+                          url("suspend.png"));
+}
+#suspend:hover {
+  border-color: #f9e2af;
+  background-color: rgba(249, 226, 175, 0.15);
+  color: #f9e2af;
+}
+
+#reboot {
+  background-image: image(url("/usr/share/wlogout/icons/reboot.png"),
+                          url("reboot.png"));
+}
+#reboot:hover {
+  border-color: #fab387;
+  background-color: rgba(250, 179, 135, 0.15);
+  color: #fab387;
+}
+
+#shutdown {
+  background-image: image(url("/usr/share/wlogout/icons/shutdown.png"),
+                          url("shutdown.png"));
+}
+#shutdown:hover {
+  border-color: #f38ba8;
+  background-color: rgba(243, 139, 168, 0.15);
+  color: #f38ba8;
+}
