@@ -1,0 +1,40 @@
+[General]
+# ── Catppuccin Mocha — Virus-Shell SDDM ──────────────────────────
+font=Monocraft Nerd Font
+
+# Wallpaper (copiado al instalar)
+background=/usr/share/sddm/themes/where_is_my_sddm_theme/background.jpg
+backgroundFillMode=fill
+
+# Blur — efecto glassmorphism
+blurRadius=60
+
+# Colores Catppuccin Mocha
+basicTextColor=#cdd6f4
+passwordTextColor=#cdd6f4
+passwordCursorColor=#89b4fa
+passwordInputBackground=#313244
+passwordInputBorderColor=#89b4fa
+passwordInputBorderWidth=2
+passwordInputRadius=12
+passwordInputWidth=0.35
+
+# Mascara de contraseña
+passwordCharacter=
+passwordMask=true
+passwordFontSize=18
+passwordInputCursorVisible=true
+cursorBlinkAnimation=true
+
+# Error de contraseña
+wrongPasswordBorderColor=#f38ba8
+wrongPasswordBorderRadius=12
+
+# Usuarios y sesiones
+showUsersByDefault=true
+showUserRealNameByDefault=true
+usersFontSize=20
+showSessionsByDefault=false
+sessionsFontSize=16
+
+hideCursor=false
