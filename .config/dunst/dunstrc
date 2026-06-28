@@ -1,0 +1,150 @@
+# ╔══════════════════════════════════════════════════════╗
+# ║         DUNST - Notificaciones con Estilo           ║
+# ║       Tema: Pywal (dorado/ámbar/azul oscuro)        ║
+# ╚══════════════════════════════════════════════════════╝
+
+[global]
+    # ── Monitor y posición ──
+    monitor = 0
+    follow = mouse
+    origin = top-right
+    offset = (15, 15)
+
+    # ── Geometría ──
+    width = (280, 400)
+    height = (0, 180)
+    notification_limit = 5
+    indicate_hidden = yes
+
+    # ── Apariencia ──
+    transparency = 0
+    separator_height = 3
+    separator_color = frame
+
+    padding = 16
+    horizontal_padding = 16
+    text_icon_padding = 16
+
+    frame_width = 2
+    frame_color = "#E8B447"
+    corner_radius = 14
+    gap_size = 6
+
+    sort = yes
+    idle_threshold = 120
+
+    # ── Texto ──
+    font = JetBrainsMono Nerd Font 10
+    line_height = 4
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+
+    # ── Íconos ──
+    enable_recursive_icon_lookup = true
+    icon_theme = "breeze-dark,Adwaita,hicolor"
+    icon_position = left
+    min_icon_size = 48
+    max_icon_size = 64
+
+    # ── Historial ──
+    sticky_history = yes
+    history_length = 20
+
+    # ── Acciones ──
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+    # ── Progreso (barras de volumen, brillo, etc.) ──
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 350
+    progress_bar_corner_radius = 5
+
+    # ── Wayland ──
+    layer = overlay
+    force_xwayland = false
+
+# ╔══════════════════════════════════════════════════════╗
+# ║              URGENCIAS Y COLORES                     ║
+# ╚══════════════════════════════════════════════════════╝
+
+[urgency_low]
+    background  = "#130916E6"
+    foreground  = "#c8bbbd"
+    frame_color = "#576F96"
+    highlight   = "#576F96"
+    timeout     = 4
+    default_icon = dialog-information
+    script = /home/virus/.config/dunst/notify-sound.sh
+
+[urgency_normal]
+    background  = "#130916E6"
+    foreground  = "#c8bbbd"
+    frame_color = "#E8B447"
+    highlight   = "#E8B447"
+    timeout     = 7
+    default_icon = dialog-information
+    override_pause_level = 30
+    script = /home/virus/.config/dunst/notify-sound.sh
+
+[urgency_critical]
+    background  = "#1a0a0eF2"
+    foreground  = "#ffffff"
+    frame_color = "#DFA161"
+    highlight   = "#DFA161"
+    timeout     = 0
+    default_icon = dialog-warning
+    override_pause_level = 60
+    script = /home/virus/.config/dunst/notify-sound.sh
+
+# ╔══════════════════════════════════════════════════════╗
+# ║              REGLAS PERSONALIZADAS                   ║
+# ╚══════════════════════════════════════════════════════╝
+
+# ── Volumen (sin sonido) ──
+[volume]
+    appname = "volume"
+    highlight = "#E8B447"
+    set_stack_tag = "volume"
+    timeout = 2
+    script = /bin/true
+
+# ── Brillo (sin sonido) ──
+[brightness]
+    appname = "brightness"
+    highlight = "#DFA161"
+    set_stack_tag = "brightness"
+    timeout = 2
+    script = /bin/true
+
+# ── Captura de pantalla ──
+[screenshot]
+    appname = "screenshot"
+    frame_color = "#305994"
+    timeout = 3
+
+# ── Spotify / Música ──
+[music]
+    appname = "Spotify"
+    frame_color = "#576F96"
+    format = "<b>♫ %s</b>\n%b"
+    timeout = 5
+
+# ── Discord / Vesktop ──
+[discord]
+    appname = "Vesktop"
+    frame_color = "#305994"
+    timeout = 5
+
+# ── Batería baja (crítica) ──
+[battery_critical]
+    appname = "battery"
+    urgency = critical
+    frame_color = "#DFA161"
+    format = "<b>⚡ %s</b>\n%b"
